@@ -1,7 +1,7 @@
 box: nodesource/xenial
 build:
   steps:
-    - arjen/hugo-build@1.12.1
+    - arjen/hugo-build@1.12.1:
         version: "0.16"
         disable_pygments: true
         flags: "--disableSitemap --disableRSS --disable404"
