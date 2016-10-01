@@ -1,0 +1,29 @@
+baseUrl = "/"
+languageCode = "en-us"
+title = "For Sale"
+# Site settings
+
+# Enter your tracking code to enable Google Analytics
+googleAnalytics = "UA-46914579-4"
+
+[params]
+    # Meta
+    title = "For Sale"
+    subtitle = "Things Colin is trying to sell. Click for more details."
+    author = "Colin Bate"
+    email = "colin@colinbate.com"
+    description = "Items for sale by Colin"
+    keywords = "sale, forsale, selling, yard sale, for sale"
+    
+    # Body background color
+    bodybgcolor = "#f9f9f9"
+    
+    # Preview container button text
+    buttontext = "Email Colin about this"
+    
+    # Footer text
+    footertext = "Made by [Colin](http://colin.is/blog/) in ![Bermuda](img/bm.png)"
+
+    # Airtable
+    base = "appjJLmlgImaXBCzw"
+    table = "items"

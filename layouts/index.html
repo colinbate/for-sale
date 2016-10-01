@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+	<head>
+	{{ partial "head.html" . }}
+	{{ template "_internal/google_analytics.html" . }}
+	</head>
+	<body>
+		<div class="container">	
+				{{ partial "header.html" . }}
+			<div class="main">
+				<ul id="og-grid" class="og-grid">
+          {{ $apiPrefix := "https://api.airtable.com/v0/"}}
+          {{ $key := getenv "AIRTABLE_KEY" }}
+          {{ $results := getJSON $apiPrefix $.Site.Params.base "/" $.Site.Params.table "?api_key=" $key}}
+					{{ range $results.records }}
+            {{ $.Scratch.Set "img" "data:image/gif;base64,R0lGODlhAQABAPAAAIWFhf///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" }}
+            {{ $.Scratch.Set "hasImg" false }}
+            {{ if isset .fields "photos" }}
+              {{ $.Scratch.Set "img" ((index .fields.photos 0).thumbnails.large.url) }}
+              {{ $.Scratch.Set "hasImg" true }}
+            {{ end }}
+					<li>
+						<a
+              class="og-grid__link"
+              href="mailto:{{ $.Site.Params.email }}?subject=Sale: {{.fields.name}}"
+              data-hasimage="{{$.Scratch.Get "hasImg"}}"
+              data-largesrc="{{$.Scratch.Get "img" | safeURL}}"
+              data-title="{{.fields.name}}"
+              data-description="{{.fields.description }}"
+              data-price="{{.fields.price }}">
+							<img class="og-grid__thumb" src="{{$.Scratch.Get "img" | safeURL}}" alt="{{.fields.name}}"/>
+						</a>
+					</li>
+					{{ end }}
+				</ul>
+				{{ partial "footer.html" . }}
+			</div>
+		</div>
+		{{ partial "scripts.html" . }}
+	</body>
+</html>
