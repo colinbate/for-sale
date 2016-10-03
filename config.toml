@@ -22,7 +22,7 @@ googleAnalytics = "UA-46914579-4"
     buttontext = "Email Colin about this"
     
     # Footer text
-    footertext = "Made by [Colin](http://colin.is/blog/) in ![Bermuda](img/bm.png)"
+    footertext = "Made by [Colin](http://colin.is/blog/) in ![Bermuda flag](img/bm.png \"Bermuda\")"
 
     # Airtable
     base = "appjJLmlgImaXBCzw"
