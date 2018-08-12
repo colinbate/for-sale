@@ -2,14 +2,14 @@ baseUrl = "/"
 languageCode = "en-us"
 title = "For Sale"
 # Site settings
-
+disableKinds = ["taxonomy", "taxonomyTerm", "RSS", "sitemap"]
 # Enter your tracking code to enable Google Analytics
 googleAnalytics = "UA-46914579-4"
 
 [params]
     # Meta
     title = "For Sale"
-    subtitle = "Things Colin is trying to sell. Click for more details."
+    subtitle = "Things Colin is trying to sell or give away. Click for more details."
     author = "Colin Bate"
     email = "colin@colinbate.com"
     description = "Items for sale by Colin"
@@ -27,3 +27,4 @@ googleAnalytics = "UA-46914579-4"
     # Airtable
     base = "appjJLmlgImaXBCzw"
     table = "items"
+    view = "Main%20View"

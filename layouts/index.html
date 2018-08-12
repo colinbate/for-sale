@@ -10,8 +10,13 @@
 			<div class="main">
 				<ul id="og-grid" class="og-grid">
           {{ $apiPrefix := "https://api.airtable.com/v0/"}}
-          {{ $key := getenv "AIRTABLE_KEY" }}
-          {{ $results := getJSON $apiPrefix $.Site.Params.base "/" $.Site.Params.table "?api_key=" $key}}
+					{{ $key := getenv "AIRTABLE_KEY" }}
+					{{ if isset .Site.Params "view" }}
+						{{ .Scratch.Set "view" (printf "&view=%s" .Site.Params.view) }}
+					{{ else }}
+					  {{ .Scratch.Set "view" "" }}
+					{{ end }}
+          {{ $results := getJSON $apiPrefix $.Site.Params.base "/" $.Site.Params.table "?api_key=" $key (.Scratch.Get "view")}}
 					{{ range $results.records }}
             {{ $.Scratch.Set "img" "data:image/gif;base64,R0lGODlhAQABAPAAAIWFhf///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" }}
             {{ $.Scratch.Set "hasImg" false }}
